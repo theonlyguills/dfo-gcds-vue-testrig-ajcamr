@@ -3,6 +3,7 @@ import { ref, defineModel, onMounted } from 'vue';
 
 const theModel = defineModel();
 const values = ref( [] );
+let isLoaded = false;
 
 onMounted(async () => {
   await fetchValues();
@@ -13,6 +14,7 @@ const fetchValues = async () => {
     method: 'GET',
   });
   values.value = (await response.json()).data;
+  isLoaded = true;
 };
 </script>
 
@@ -24,6 +26,7 @@ const fetchValues = async () => {
       name="Select Name"
       label="Select the name"
       default-value="Please select a name"
+      v-if="isLoaded"
     >
       <option
         v-for="value in values"
