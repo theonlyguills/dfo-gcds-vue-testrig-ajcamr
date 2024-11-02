@@ -12,11 +12,7 @@ const fetchValues = async () => {
   const response = await fetch('https://reqres.in/api/users?page=1', {
     method: 'GET',
   });
-  if (!response.ok) {
-    throw new Error('Network response was not ok');
-  }
-  const received = await response.json();
-  values.value = received.data;
+  values.value = (await response.json()).data;
 };
 </script>
 
@@ -41,6 +37,21 @@ const fetchValues = async () => {
     <ul>
       <li v-for="value in values">{{ value.first_name }}</li>
     </ul>
+
+    <select
+      id="nameId"
+      name="Select Name"
+      label="Select the name"
+      default-value="Please select a name"
+    >
+      <option
+        v-for="value in values"
+        :key="value.id"
+        :value="value.first_name"
+      >
+        {{ value.first_name }}
+      </option>
+    </select>
 
 </div>
 </template>
