@@ -1,12 +1,8 @@
 <script setup>
-import { ref, defineModel } from 'vue';
-import { onMounted } from 'vue';
+import { ref, defineModel, onMounted } from 'vue';
 
 const theModel = defineModel();
-const values = ref();
-const valuesLoaded = computed(() => {
-  return values.value?.data?.lenght;
-});
+const values = ref( [] );
 
 onMounted(async () => {
   await fetchValues();
@@ -19,7 +15,8 @@ const fetchValues = async () => {
   if (!response.ok) {
     throw new Error('Network response was not ok');
   }
-  values.value = await response.json();
+  const received = await response.json();
+  values.value = received.data;
 };
 </script>
 
@@ -33,7 +30,7 @@ const fetchValues = async () => {
       default-value="Please select a name"
     >
       <option
-        v-for="value in values.data"
+        v-for="value in values"
         :key="value.id"
         :value="value.first_name"
       >
@@ -42,9 +39,10 @@ const fetchValues = async () => {
     </gcds-select>
 
     <ul>
-      <li v-for="value in values.data">{{ value.first_name }}</li>
+      <li v-for="value in values">{{ value.first_name }}</li>
     </ul>
-  </div>
+
+</div>
 </template>
 
 <style scoped></style>
