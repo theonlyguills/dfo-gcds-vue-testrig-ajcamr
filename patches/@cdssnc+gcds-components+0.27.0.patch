@@ -1,0 +1,24 @@
+diff --git a/node_modules/@cdssnc/gcds-components/dist/components/gcds-pagination.js b/node_modules/@cdssnc/gcds-components/dist/components/gcds-pagination.js
+index 7f529ac..509eee8 100644
+--- a/node_modules/@cdssnc/gcds-components/dist/components/gcds-pagination.js
++++ b/node_modules/@cdssnc/gcds-components/dist/components/gcds-pagination.js
+@@ -185,6 +185,7 @@ const GcdsPagination$1 = /*@__PURE__*/ proxyCustomElement(class GcdsPagination e
+             : 'javascript:void(0)';
+         const linkAttrs = {
+             'href': href,
++            'tabindex': 0,
+             'aria-label': !end
+                 ? I18N[this.lang].pageNumberOf
+                     .replace('{#}', page)
+diff --git a/node_modules/@cdssnc/gcds-components/dist/esm/gcds-alert_41.entry.js b/node_modules/@cdssnc/gcds-components/dist/esm/gcds-alert_41.entry.js
+index 4643a3a..f486f8c 100644
+--- a/node_modules/@cdssnc/gcds-components/dist/esm/gcds-alert_41.entry.js
++++ b/node_modules/@cdssnc/gcds-components/dist/esm/gcds-alert_41.entry.js
+@@ -3708,6 +3708,7 @@ const GcdsPagination = class {
+             : 'javascript:void(0)';
+         const linkAttrs = {
+             'href': href,
++            'tabindex': 0,
+             'aria-label': !end
+                 ? I18N$9[this.lang].pageNumberOf
+                     .replace('{#}', page)
