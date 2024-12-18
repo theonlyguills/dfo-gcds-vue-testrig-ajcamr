@@ -2,7 +2,7 @@
 import { ref, defineModel, onMounted } from 'vue';
 
 function navigateToPage(event) {
-  console.log("event", event);
+  alert(event);
 }
 </script>
 
